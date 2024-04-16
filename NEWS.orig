@@ -57,10 +57,6 @@ PHP                                                                        NEWS
   . Fixed bug #73983 (crash on finish work with phar in cli + opcache).
     (Anatol)
 
-- Core:
-  . Fixed bug #73807 (Performance problem with processing large post request).
-    (Nikita)
-
 - OpenSSL:
   . Fixed bug #71519 (add serial hex to return value array). (xrobau)
   . Fixed bug #73692 (Compile ext/openssl with openssl 1.1.0 on Win). (Anatol)
