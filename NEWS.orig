@@ -29,10 +29,6 @@ PHP                                                                        NEWS
     have the same name). (Laruence)
   . Fixed bug #69090 (check cached files permissions)
 
-- Core:
-  . Fixed bug #73807 (Performance problem with processing large post request).
-    (Nikita)
-
 - OpenSSL:
   . Fixed bug #73478 (openssl_pkey_new() generates wrong pub/priv keys with
     Diffie Hellman). (Jakub Zelenka)
