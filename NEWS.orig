@@ -636,10 +636,6 @@ PHP                                                                        NEWS
 - BCmath:
   . Fixed bug #60377 (bcscale related crashes on 64bits platforms). (shm)
 
-- Core:
-  . Fixed bug #64879 (Heap based buffer overflow in quoted_printable_encode,
-    CVE 2013-2110). (Stas)
-
 - Calendar:
   . Fixed bug #55797 (Integer overflow in SdnToGregorian leads to segfault (in
     optimized builds). (Gustavo)
