@@ -134,10 +134,6 @@ PHP                                                                        NEWS
    . Fixed bug #72455 (Heap Overflow due to integer overflows). (CVE-2016-5769)
      (Stas)
 
-- Core:
-  . Fixed bug #73807 (Performance problem with processing large post request).
-    (Nikita)
-
 - OpenSSL:
   . Fixed bug #72140 (segfault after calling ERR_free_strings()).
     (Jakub Zelenka)
