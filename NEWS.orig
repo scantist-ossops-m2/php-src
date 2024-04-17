@@ -111,10 +111,6 @@ PHP                                                                        NEWS
     pad). (Ilia)
   . Fixed bug #50982 (incorrect assumption of PAGE_SIZE size). (Dmitry)
 
-- Core:
-  . Fixed bug #64879 (Heap based buffer overflow in quoted_printable_encode,
-    CVE 2013-2110). (Stas)
-
 - Calendar:
   . Fixed bug #55797 (Integer overflow in SdnToGregorian leads to segfault (in
     optimized builds). (Gustavo)
