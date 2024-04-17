@@ -764,6 +764,11 @@ static void php_wddx_pop_element(void *user_data, const char *name)
 			} else {
 				ZVAL_EMPTY_STRING(ent1->data);
 			}
+		} else {
+			ent.type = ST_BOOLEAN;
+			SET_STACK_VARNAME;
+			ZVAL_FALSE(&ent.data);
+			wddx_stack_push((wddx_stack *)stack, &ent, sizeof(st_entry));
 		}
 
 		/* Call __wakeup() method on the object. */
