@@ -581,11 +581,6 @@ static void php_wddx_push_element(void *user_data, const char *name, const char 
 			if (!strcmp(atts[i], EL_VAR_NAME) && atts[i+1]) {
 				stack->varname = estrdup(atts[i+1]);
 			}
-		} else {
-			ent.type = ST_BOOLEAN;
-			SET_STACK_VARNAME;
-			ZVAL_FALSE(&ent.data);
-			wddx_stack_push((wddx_stack *)stack, &ent, sizeof(st_entry));
 		}
 	}
 }
