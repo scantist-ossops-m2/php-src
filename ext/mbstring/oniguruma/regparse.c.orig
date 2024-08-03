@@ -3175,9 +3175,7 @@ next_state_class(CClassNode* cc, RegToken* tok, WCINT* vs,
     /* nothing */
   }
 
-  if (*state != CCS_START)
-    *state = CCS_VALUE;
-
+  *state = CCS_VALUE;
   *type  = CCV_CLASS;
   return 0;
 }
