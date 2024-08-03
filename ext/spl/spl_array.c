@@ -306,7 +306,7 @@ static zval **spl_array_get_dimension_ptr_ptr(int check_inherited, zval *object,
 	long index;
 	HashTable *ht = spl_array_get_hash_table(intern, 0 TSRMLS_CC);
 
-	if (!offset) {
+	if (!offset || !ht) {
 		return &EG(uninitialized_zval_ptr);
 	}
 
@@ -620,7 +620,7 @@ static int spl_array_has_dimension_ex(int check_inherited, zval *object, zval *o
 		HashTable *ht = spl_array_get_hash_table(intern, 0 TSRMLS_CC);
 
 		switch(Z_TYPE_P(offset)) {
-			case IS_STRING: 
+			case IS_STRING:
 				if (zend_symtable_find(ht, Z_STRVAL_P(offset), Z_STRLEN_P(offset)+1, (void **) &tmp) != FAILURE) {
 					if (check_empty == 2) {
 						return 1;
@@ -632,7 +632,7 @@ static int spl_array_has_dimension_ex(int check_inherited, zval *object, zval *o
 
 			case IS_DOUBLE:
 			case IS_RESOURCE:
-			case IS_BOOL: 
+			case IS_BOOL:
 			case IS_LONG:
 				if (offset->type == IS_DOUBLE) {
 					index = (long)Z_DVAL_P(offset);
@@ -837,6 +837,16 @@ static HashTable* spl_array_get_debug_info(zval *obj, int *is_temp TSRMLS_DC) /*
 
 		return intern->debug_info;
 	}
+}
+/* }}} */
+
+static HashTable *spl_array_get_gc(zval *object, zval ***gc_data, int *gc_data_count TSRMLS_DC) /* {{{ */
+{
+	spl_array_object *intern = (spl_array_object*)zend_object_store_get_object(object TSRMLS_CC);
+
+	*gc_data = &intern->array;
+	*gc_data_count = 1;
+	return zend_std_get_properties(object);
 }
 /* }}} */
 
@@ -1794,7 +1804,9 @@ SPL_METHOD(Array, unserialize)
 		intern->ar_flags |= flags & SPL_ARRAY_CLONE_MASK;
 		zval_ptr_dtor(&intern->array);
 		ALLOC_INIT_ZVAL(intern->array);
-		if (!php_var_unserialize(&intern->array, &p, s + buf_len, &var_hash TSRMLS_CC)) {
+		if (!php_var_unserialize(&intern->array, &p, s + buf_len, &var_hash TSRMLS_CC)
+				|| (Z_TYPE_P(intern->array) != IS_ARRAY && Z_TYPE_P(intern->array) != IS_OBJECT)) {
+			zval_ptr_dtor(&intern->array);
 			goto outexcept;
 		}
 		var_push_dtor(&var_hash, &intern->array);
@@ -1969,6 +1981,7 @@ PHP_MINIT_FUNCTION(spl_array)
 
 	spl_handler_ArrayObject.get_properties = spl_array_get_properties;
 	spl_handler_ArrayObject.get_debug_info = spl_array_get_debug_info;
+	spl_handler_ArrayObject.get_gc = spl_array_get_gc;
 	spl_handler_ArrayObject.read_property = spl_array_read_property;
 	spl_handler_ArrayObject.write_property = spl_array_write_property;
 	spl_handler_ArrayObject.get_property_ptr_ptr = spl_array_get_property_ptr_ptr;
