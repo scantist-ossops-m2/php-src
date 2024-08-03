@@ -605,11 +605,6 @@ static void php_wddx_push_element(void *user_data, const char *name, const char 
 				decoded_value = xml_utf8_decode(atts[i+1],strlen(atts[i+1]),&decoded_len,"ISO-8859-1");
 				stack->varname = decoded_value;
 			}
-		} else {
-			ent.type = ST_BOOLEAN;
-			SET_STACK_VARNAME;
-			ZVAL_FALSE(&ent.data);
-			wddx_stack_push((wddx_stack *)stack, &ent, sizeof(st_entry));
 		}
 	}
 }
