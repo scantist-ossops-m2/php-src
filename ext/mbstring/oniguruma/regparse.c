@@ -260,14 +260,17 @@ strdup_with_null(OnigEncoding enc, UChar* s, UChar* end)
   c = ONIGENC_MBC_TO_CODE(enc, p, end); \
   pfetch_prev = p; \
   p += ONIGENC_MBC_ENC_LEN(enc, p); \
+  if(UNEXPECTED(p > end)) p = end; \
 } while (0)
 
 #define PINC_S     do { \
   p += ONIGENC_MBC_ENC_LEN(enc, p); \
+  if(UNEXPECTED(p > end)) p = end; \
 } while (0)
 #define PFETCH_S(c) do { \
   c = ONIGENC_MBC_TO_CODE(enc, p, end); \
   p += ONIGENC_MBC_ENC_LEN(enc, p); \
+  if(UNEXPECTED(p > end)) p = end; \
 } while (0)
 
 #define PPEEK        (p < end ? ONIGENC_MBC_TO_CODE(enc, p, end) : PEND_VALUE)
@@ -3064,7 +3067,7 @@ fetch_token_in_cc(OnigToken* tok, UChar** src, UChar* end, ScanEnv* env)
 	PUNFETCH;
 	prev = p;
 	num = scan_unsigned_octal_number(&p, end, 3, enc);
-	if (num < 0) return ONIGERR_TOO_BIG_NUMBER;
+	if (num < 0 || num >= 256) return ONIGERR_TOO_BIG_NUMBER;
 	if (p == prev) {  /* can't read nothing. */
 	  num = 0; /* but, it's not error */
 	}
@@ -3436,7 +3439,7 @@ fetch_token(OnigToken* tok, UChar** src, UChar* end, ScanEnv* env)
       if (IS_SYNTAX_OP(syn, ONIG_SYN_OP_ESC_OCTAL3)) {
 	prev = p;
 	num = scan_unsigned_octal_number(&p, end, (c == '0' ? 2:3), enc);
-	if (num < 0) return ONIGERR_TOO_BIG_NUMBER;
+	if (num < 0 || num >= 256) return ONIGERR_TOO_BIG_NUMBER;
 	if (p == prev) {  /* can't read nothing. */
 	  num = 0; /* but, it's not error */
 	}
@@ -3580,7 +3583,9 @@ fetch_token(OnigToken* tok, UChar** src, UChar* end, ScanEnv* env)
 	tok->u.code = (OnigCodePoint )num;
       }
       else { /* string */
-	p = tok->backp + enclen(enc, tok->backp);
+          int len;
+          SAFE_ENC_LEN(enc, tok->backp, end, len);
+          p = tok->backp + len;
       }
       break;
     }
@@ -4068,7 +4073,9 @@ next_state_class(CClassNode* cc, OnigCodePoint* vs, enum CCVALTYPE* type,
     }
   }
 
-  *state = CCS_VALUE;
+  if (*state != CCS_START)
+    *state = CCS_VALUE;
+
   *type  = CCV_CLASS;
   return 0;
 }
@@ -4084,7 +4091,11 @@ next_state_val(CClassNode* cc, OnigCodePoint *vs, OnigCodePoint v,
   switch (*state) {
   case CCS_VALUE:
     if (*type == CCV_SB)
+    {
+    if (*vs > 0xff)
+      return ONIGERR_INVALID_CODE_POINT_VALUE;
       BITSET_SET_BIT(cc->bs, (int )(*vs));
+    }
     else if (*type == CCV_CODE_POINT) {
       r = add_code_range(&(cc->mbuf), env, *vs, *vs);
       if (r < 0) return r;
