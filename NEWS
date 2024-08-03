@@ -44,6 +44,10 @@ PHP                                                                        NEWS
   . Fixed bug #72014 (Including a file with anonymous classes multiple times
     leads to fatal error). (Laruence)
 
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
+
 - OpenSSL:
   . Fixed bug #72165 (Null pointer dereference - openssl_csr_new). (Anatol)
 
