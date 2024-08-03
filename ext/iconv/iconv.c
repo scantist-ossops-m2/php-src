@@ -1123,7 +1123,7 @@ static php_iconv_err_t _php_iconv_mime_encode(smart_str *pretval, const char *fn
 								break;
 							}
 						} else {
-						    php_error_docref(NULL, E_WARNING, "iconv stream filter (\"%s\"=>\"%s\"): invalid multibyte sequence", self->from_charset, self->to_charset);
+						    php_error_docref(NULL TSRMLS_CC, E_WARNING, "iconv stream filter (\"%s\"=>\"%s\"): invalid multibyte sequence", self->from_charset, self->to_charset);
 						    goto out_failure;
 						}
 					}
