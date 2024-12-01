@@ -515,10 +515,6 @@ PHP                                                                        NEWS
     headers). (fat)
   . Fixed bug #52498 (libevent was not only linked to php-fpm). (fat)
 
-- Openssl:
-  . Fixed handling null bytes in subjectAltName (CVE-2013-4073). 
-    (Christian Heimes)
-
 - PDO:
   . Fixed bug #52699 (PDO bindValue writes long int 32bit enum).
     (rein at basefarm dot no) 
