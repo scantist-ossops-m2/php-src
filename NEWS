@@ -50,6 +50,10 @@ PHP                                                                        NEWS
   . Fixed bug #71906 (AddressSanitizer: negative-size-param (-1) in
     mbfl_strcut). (Stas)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #47803, #69526 (Executing prepared statements is succesfull only
     for the first two statements). (einavitamar at gmail dot com, Anatol)
