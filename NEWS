@@ -575,6 +575,9 @@ PHP                                                                        NEWS
   . Fixed bug #74090 (stream_get_contents maxlength>-1 returns empty string).
     (Anatol)
 
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
+
 
 16 Feb 2017 PHP 7.0.16
 
@@ -774,6 +777,10 @@ PHP                                                                        NEWS
 - Mysqlnd:
   . Fixed bug #64526 (Add missing mysqlnd.* parameters to php.ini-*). (cmb)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #73448 (odbc_errormsg returns trash, always 513 bytes).
     (Anatol)
@@ -796,6 +803,10 @@ PHP                                                                        NEWS
 
 - Phar:
   . Fixed bug #73580 (Phar::isValidPharFilename illegal memory access). (Stas)
+
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
 
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP
