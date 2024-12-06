@@ -2005,7 +2005,7 @@ next_extension:
 	}
 
 	while (pos != filename && (*(pos - 1) == '/' || *(pos - 1) == '\0')) {
-		pos = memchr(pos + 1, '.', filename_len - (pos - filename) + 1);
+		pos = memchr(pos + 1, '.', filename_len - (pos - filename) - 1);
 		if (!pos) {
 			return FAILURE;
 		}
@@ -2192,6 +2192,10 @@ int phar_split_fname(const char *filename, int filename_len, char **arch, int *a
 	char *save;
 #endif
 	int ext_len;
+
+	if (CHECK_NULL_PATH(filename, filename_len)) {
+		return FAILURE;
+	}
 
 	if (!strncasecmp(filename, "phar://", 7)) {
 		filename += 7;
