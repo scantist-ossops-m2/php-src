@@ -801,6 +801,10 @@ PHP                                                                        NEWS
 - Phar:
   . Fixed bug #73580 (Phar::isValidPharFilename illegal memory access). (Stas)
 
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
+
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP
     headers). (duncan3dc)
