@@ -1643,6 +1643,10 @@ PHP                                                                        NEWS
   . Fixed invalid handle error with Implicit Result Sets. (Chris Jones)
   . Fixed bug #72524 (Binding null values triggers ORA-24816 error). (Chris Jones)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #73448 (odbc_errormsg returns trash, always 513 bytes).
     (Anatol)
@@ -1815,6 +1819,10 @@ PHP                                                                        NEWS
     allocation). (djodjo at gmail dot com)
   . Fixed bug #72479 (Use After Free Vulnerability in SNMP with GC and
     unserialize()). (Stas)
+
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
 
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP 
