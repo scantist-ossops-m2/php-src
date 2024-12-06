@@ -2,6 +2,9 @@ PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 04 Jan 2018, PHP 7.1.13
 
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
+
 
 - Core:
   . Fixed bug #75573 (Segmentation fault in 7.1.12 and 7.0.26). (Laruence)
