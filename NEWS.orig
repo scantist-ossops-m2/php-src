@@ -16,10 +16,6 @@ PHP                                                                        NEWS
 - PGSQL:
   . Fixed #75838 (Memory leak in pg_escape_bytea()). (ard_1 at mail dot ru)
 
-- IMAP:
-  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
-    mailbox parameter). (Stas)
-
 - ODBC:
   . Fixed bug #73725 (Unable to retrieve value of varchar(max) type). (Anatol)
 
