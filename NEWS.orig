@@ -2,9 +2,6 @@ PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 28 Nov 2019, PHP 7.4.0
 
-- SOAP:
-  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
-
 
 - Core:
   . Implemented RFC: Deprecate curly brace syntax for accessing array elements
