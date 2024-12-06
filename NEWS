@@ -509,6 +509,10 @@ PHP                                                                        NEWS
   . Fixed bug #72061 (Out-of-bounds reads in zif_grapheme_stripos with negative
     offset). (Stas)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #63171 (Script hangs after max_execution_time). (Remi)
 
