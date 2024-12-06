@@ -113,10 +113,6 @@ PHP                                                                        NEWS
 - mbstring:
   . Fixed bug #71397 (mb_send_mail segmentation fault). (Andrea, Yasuo)
 
-- Core:
-  . Fixed bug #73807 (Performance problem with processing large post request).
-    (Nikita)
-
 - OpenSSL:
   . Fixed bug #71475 (openssl_seal() uninitialized memory usage). (Stas)
 
