@@ -169,6 +169,10 @@ PHP                                                                        NEWS
 - Streams/Socket:
   . Add IPV6_V6ONLY constant / make it usable in stream contexts. (Bob)
 
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
+
 - Soap:
   . Fixed bug #70993 (Array key references break argument processing).
     (Laruence)
