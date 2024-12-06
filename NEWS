@@ -2,6 +2,9 @@ PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 04 Jan 2018, PHP 7.1.13
 
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
+
 
 - Core:
   . Fixed bug #75573 (Segmentation fault in 7.1.12 and 7.0.26). (Laruence)
@@ -1252,6 +1255,10 @@ PHP                                                                        NEWS
   . Fixed invalid handle error with Implicit Result Sets. (Chris Jones)
   . Fixed bug #72524 (Binding null values triggers ORA-24816 error). (Chris Jones)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #73448 (odbc_errormsg returns trash, always 513 bytes).
     (Anatol)
@@ -1424,6 +1431,10 @@ PHP                                                                        NEWS
     allocation). (djodjo at gmail dot com)
   . Fixed bug #72479 (Use After Free Vulnerability in SNMP with GC and
     unserialize()). (Stas)
+
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
 
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP 
@@ -2319,6 +2330,9 @@ PHP                                                                        NEWS
 - Session:
   . Fixed bug #71972 (Cyclic references causing session_start(): Failed to
     decode session object). (Laruence)
+
+- COM:
+  . Fixed bug #77177 (Serializing or unserializing COM objects crashes). (cmb)
 
 - Sockets:
   . Added socket_export_stream() function for getting a stream compatible
