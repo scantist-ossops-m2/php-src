@@ -2648,6 +2648,9 @@ PHP                                                                        NEWS
   . Added warning for dangerous client encoding and remove possible injections
     for pg_insert()/pg_update()/pg_delete()/pg_select(). (Yasuo)
 
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
+
 
 06 Feb 2014, PHP 5.5.9
 
