@@ -15,13 +15,6 @@
 13. Other Changes
 
 
-- IMAP:
-  Starting with 7.2.13, rsh/ssh logins are disabled by default. Use
-  imap.enable_insecure_rsh if you want to enable them. Note that the IMAP
-  library does not filter mailbox names before passing them to rsh/ssh
-  command, thus passing untrusted data to this function with rsh/ssh enabled
-  is insecure.
-
 ========================================
 1. Backward Incompatible Changes
 ========================================
