@@ -51,6 +51,10 @@ PHP                                                                        NEWS
 - Postgres:
   . Fixed bug #73498 (Incorrect SQL generated for pg_copy_to()). (Craig Duncan)
 
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
+
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP
     headers). (duncan3dc)
