@@ -45,6 +45,9 @@ PHP                                                                        NEWS
   . Fixed bug #70976 (Memory Read via gdImageRotateInterpolated Array Index
     Out of Bounds). (emmanuel dot law at gmail dot com).
 
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
+
 - Mbstring:
   . Fixed bug #71066 (mb_send_mail: Program terminated with signal SIGSEGV,
     Segmentation fault). (Laruence)
@@ -165,6 +168,10 @@ PHP                                                                        NEWS
 
 - Streams/Socket:
   . Add IPV6_V6ONLY constant / make it usable in stream contexts. (Bob)
+
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
 
 - Soap:
   . Fixed bug #70993 (Array key references break argument processing).
@@ -573,6 +580,10 @@ PHP                                                                        NEWS
   . Corrected oci8 hash destructors to prevent segfaults, and a few other fixes.
     (Cameron Porter)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #69975 (PHP segfaults when accessing nvarchar(max) defined
     columns). (cmb)
@@ -605,6 +616,10 @@ PHP                                                                        NEWS
     generation is turned on. (Laruence)
   . Fixed bug #68644 (strlen incorrect : mbstring + func_overload=2 +UTF-8
     + Opcache). (Laruence)
+
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
 
 - OpenSSL:
   . Require at least OpenSSL version 0.9.8. (Jakub Zelenka)
