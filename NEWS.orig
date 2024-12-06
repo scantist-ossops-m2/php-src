@@ -358,9 +358,6 @@ PHP                                                                        NEWS
   . Fixed arginfo for array_replace(_recursive) and array_merge(_recursive).
     (carusogabriel)
 
-- SOAP:
-  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
-
 
 26 Apr 2018, PHP 7.1.17
 
