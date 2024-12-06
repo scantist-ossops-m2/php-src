@@ -33,6 +33,9 @@ PHP                                                                        NEWS
   . Fixed bug #72069 (Behavior \JsonSerializable different from json_encode).
     (Laruence)
 
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
+
 - Mbstring:
   . Fixed bug #72164 (Null Pointer Dereference - mb_ereg_replace). (Laruence)
 
