@@ -48,6 +48,10 @@ PHP                                                                        NEWS
   . Fixed bug #73983 (crash on finish work with phar in cli + opcache).
     (Anatol)
 
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
+
 - OpenSSL:
   . Fixed bug #71519 (add serial hex to return value array). (xrobau)
 
@@ -196,6 +200,10 @@ PHP                                                                        NEWS
 
 - Mysqlnd:
   . Fixed bug #64526 (Add missing mysqlnd.* parameters to php.ini-*). (cmb)
+
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
 
 - ODBC:
   . Fixed bug #73448 (odbc_errormsg returns trash, always 513 bytes).
@@ -363,6 +371,9 @@ PHP                                                                        NEWS
 
 - Intl:
   . Fixed bug #73218 (add mitigation for ICU int overflow). (Stas)
+
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
 
 - Mbstring:
   . Fixed bug #66797 (mb_substr only takes 32-bit signed integer). (cmb)
