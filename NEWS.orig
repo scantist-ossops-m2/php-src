@@ -435,6 +435,9 @@ PHP                                                                        NEWS
 - Intl:
   . Fixed bug #73218 (add mitigation for ICU int overflow). (Stas)
 
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
+
 - Mbstring:
   . Fixed bug #66797 (mb_substr only takes 32-bit signed integer). (cmb)
   . Fixed bug #66964 (mb_convert_variables() cannot detect recursion) (Yasuo)
