@@ -70,6 +70,9 @@ PHP                                                                        NEWS
   . Fixed bug #74090 (stream_get_contents maxlength>-1 returns empty string).
     (Anatol)
 
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
+
 
 16 Feb 2017 PHP 7.0.16
 
