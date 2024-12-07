@@ -774,10 +774,6 @@ PHP                                                                        NEWS
 - Mysqlnd:
   . Fixed bug #64526 (Add missing mysqlnd.* parameters to php.ini-*). (cmb)
 
-- IMAP:
-  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
-    mailbox parameter). (Stas)
-
 - ODBC:
   . Fixed bug #73448 (odbc_errormsg returns trash, always 513 bytes).
     (Anatol)
