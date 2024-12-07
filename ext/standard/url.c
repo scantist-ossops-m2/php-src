@@ -556,7 +556,7 @@ PHPAPI size_t php_url_decode(char *str, size_t len)
 #ifndef CHARSET_EBCDIC
 			*dest = (char) php_htoi(data + 1);
 #else
-			*dest = os_toebcdic[(char) php_htoi(data + 1)];
+			*dest = os_toebcdic[(unsigned char) php_htoi(data + 1)];
 #endif
 			data += 2;
 			len -= 2;
@@ -648,7 +648,7 @@ PHPAPI size_t php_raw_url_decode(char *str, size_t len)
 #ifndef CHARSET_EBCDIC
 			*dest = (char) php_htoi(data + 1);
 #else
-			*dest = os_toebcdic[(char) php_htoi(data + 1)];
+			*dest = os_toebcdic[(unsigned char) php_htoi(data + 1)];
 #endif
 			data += 2;
 			len -= 2;
