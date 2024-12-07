@@ -400,6 +400,10 @@ PHP                                                                        NEWS
   . Corrected oci8 hash destructors to prevent segfaults, and a few other fixes.
     (Cameron Porter)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #69975 (PHP segfaults when accessing nvarchar(max) defined
     columns). (cmb)
@@ -432,6 +436,10 @@ PHP                                                                        NEWS
     generation is turned on. (Laruence)
   . Fixed bug #68644 (strlen incorrect : mbstring + func_overload=2 +UTF-8
     + Opcache). (Laruence)
+
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
 
 - OpenSSL:
   . Require at least OpenSSL version 0.9.8. (Jakub Zelenka)
@@ -1160,6 +1168,9 @@ PHP                                                                        NEWS
     flags are used). (Jeff Welch)
   . Fixed bug #69203 (FILTER_FLAG_STRIP_HIGH doesn't strip ASCII 127). (Jeff
     Welch)
+
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
 
 - Mbstring:
   . Fixed bug #68846 (False detection of CJK Unified Ideographs Extension E).
@@ -2636,6 +2647,9 @@ PHP                                                                        NEWS
 - Pgsql:
   . Added warning for dangerous client encoding and remove possible injections
     for pg_insert()/pg_update()/pg_delete()/pg_select(). (Yasuo)
+
+- SOAP:
+  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
 
 
 06 Feb 2014, PHP 5.5.9
