@@ -217,6 +217,9 @@ PHP                                                                        NEWS
 - Intl:
   . Fixed bug #72533 (locale_accept_from_http out-of-bounds access). (Stas)
 
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
+
 - Mbstring:
   . Fixed bug #72405 (mb_ereg_replace - mbc_to_code (oniguruma) -
     oob read access). (Laruence)
@@ -305,6 +308,10 @@ PHP                                                                        NEWS
 - mcrypt:
    . Fixed bug #72455 (Heap Overflow due to integer overflows). (CVE-2016-5769)
      (Stas)
+
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
 
 - OpenSSL:
   . Fixed bug #72140 (segfault after calling ERR_free_strings()).
@@ -501,6 +508,10 @@ PHP                                                                        NEWS
     (Anatol)
   . Fixed bug #72061 (Out-of-bounds reads in zif_grapheme_stripos with negative
     offset). (Stas)
+
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
 
 - ODBC:
   . Fixed bug #63171 (Script hangs after max_execution_time). (Remi)
