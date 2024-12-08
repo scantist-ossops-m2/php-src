@@ -134,10 +134,6 @@ PHP                                                                        NEWS
   . Fixed bug #72982 (Memory leak in zend_accel_blacklist_update_regexp()
     function). (Laruence)
 
-- Core:
-  . Fixed bug #73807 (Performance problem with processing large post request).
-    (Nikita)
-
 - OpenSSL:
   . Fixed bug #73072 (Invalid path SNI_server_certs causes segfault).
     (Jakub Zelenka)
