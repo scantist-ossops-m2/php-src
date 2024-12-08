@@ -1452,9 +1452,6 @@ PHP                                                                        NEWS
   . Fixed bug #75453 (Incorrect reflection for ibase_[p]connect). (villfa)
   . Fixed bug #76443 (php+php_interbase.dll crash on module_shutdown). (Kalle)
 
-- SOAP:
-  . Fixed bug #80672 (Null Dereference in SoapClient). (CVE-2021-21702) (cmb, Stas)
-
 
 - intl:
   . Fixed bug #75317 (UConverter::setDestinationEncoding changes source instead
