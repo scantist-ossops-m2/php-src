@@ -61,6 +61,10 @@ PHP                                                                        NEWS
 - GD:
   . Fixed bug #73957 (signed integer conversion in imagescale()). (cmb)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #76088 (ODBC functions are not available by default on Windows).
     (cmb)
@@ -1621,6 +1625,10 @@ PHP                                                                        NEWS
   . Fixed bug #72479 (Use After Free Vulnerability in SNMP with GC and
     unserialize()). (Stas)
 
+- Phar:
+  . Fixed bug #77247 (heap buffer overflow in phar_detect_phar_fname_ext).
+    (Stas)
+
 - Soap:
   . Fixed bug #73538 (SoapClient::__setSoapHeaders doesn't overwrite SOAP 
     headers). (duncan3dc)
@@ -2515,6 +2523,9 @@ PHP                                                                        NEWS
 - Session:
   . Fixed bug #71972 (Cyclic references causing session_start(): Failed to
     decode session object). (Laruence)
+
+- COM:
+  . Fixed bug #77177 (Serializing or unserializing COM objects crashes). (cmb)
 
 - Sockets:
   . Added socket_export_stream() function for getting a stream compatible
