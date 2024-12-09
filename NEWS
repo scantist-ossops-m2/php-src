@@ -89,6 +89,10 @@ PHP                                                                        NEWS
   . Fixed bug #76113 (mbstring does not build with Oniguruma 6.8.1).
     (chrullrich, cmb)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #76088 (ODBC functions are not available by default on Windows).
     (cmb)
