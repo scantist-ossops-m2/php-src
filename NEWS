@@ -58,6 +58,10 @@ PHP                                                                        NEWS
   . Fixed bug #72061 (Out-of-bounds reads in zif_grapheme_stripos with negative
     offset). (Stas)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #63171 (Script hangs after max_execution_time). (Remi)
 
@@ -326,6 +330,10 @@ PHP                                                                        NEWS
 - mbstring:
   . Fixed bug #71397 (mb_send_mail segmentation fault). (Andrea, Yasuo)
 
+- Core:
+  . Fixed bug #73807 (Performance problem with processing large post request).
+    (Nikita)
+
 - OpenSSL:
   . Fixed bug #71475 (openssl_seal() uninitialized memory usage). (Stas)
 
@@ -413,6 +421,9 @@ PHP                                                                        NEWS
 - GD:
   . Fixed bug #70976 (Memory Read via gdImageRotateInterpolated Array Index
     Out of Bounds). (emmanuel dot law at gmail dot com)
+
+- Intl:
+  . Fixed bug #73473 (Stack Buffer Overflow in msgfmt_parse_message). (libnex)
 
 - Mbstring:
   . Fixed bug #71066 (mb_send_mail: Program terminated with signal SIGSEGV,
