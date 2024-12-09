@@ -818,6 +818,11 @@ static void php_wddx_push_element(void *user_data, const XML_Char *name, const X
 
 				break;
 			}
+		} else {
+			ent.type = ST_BOOLEAN;
+			SET_STACK_VARNAME;
+			ZVAL_FALSE(&ent.data);
+			wddx_stack_push((wddx_stack *)stack, &ent, sizeof(st_entry));
 		}
 
 		wddx_stack_push((wddx_stack *)stack, &ent, sizeof(st_entry));
@@ -880,10 +885,10 @@ static void php_wddx_pop_element(void *user_data, const XML_Char *name)
 		if (Z_TYPE(ent1->data) == IS_UNDEF) {
 			if (stack->top > 1) {
 				stack->top--;
+				efree(ent1);
 			} else {
 				stack->done = 1;
 			}
-			efree(ent1);
 			return;
 		}
 
