@@ -400,6 +400,10 @@ PHP                                                                        NEWS
   . Corrected oci8 hash destructors to prevent segfaults, and a few other fixes.
     (Cameron Porter)
 
+- IMAP:
+  . Fixed bug #77153 (imap_open allows to run arbitrary shell commands via
+    mailbox parameter). (Stas)
+
 - ODBC:
   . Fixed bug #69975 (PHP segfaults when accessing nvarchar(max) defined
     columns). (cmb)
