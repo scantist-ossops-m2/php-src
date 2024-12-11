@@ -308,8 +308,7 @@ static void phar_do_403(char *entry, int entry_len) /* {{{ */
 	sapi_header_op(SAPI_HEADER_REPLACE, &ctr);
 	sapi_send_headers();
 	PHPWRITE("<html>\n <head>\n  <title>Access Denied</title>\n </head>\n <body>\n  <h1>403 - File ", sizeof("<html>\n <head>\n  <title>Access Denied</title>\n </head>\n <body>\n  <h1>403 - File ") - 1);
-	PHPWRITE(entry, entry_len);
-	PHPWRITE(" Access Denied</h1>\n </body>\n</html>", sizeof(" Access Denied</h1>\n </body>\n</html>") - 1);
+	PHPWRITE("Access Denied</h1>\n </body>\n</html>", sizeof("Access Denied</h1>\n </body>\n</html>") - 1);
 }
 /* }}} */
 
@@ -333,8 +332,7 @@ static void phar_do_404(phar_archive_data *phar, char *fname, int fname_len, cha
 	sapi_header_op(SAPI_HEADER_REPLACE, &ctr);
 	sapi_send_headers();
 	PHPWRITE("<html>\n <head>\n  <title>File Not Found</title>\n </head>\n <body>\n  <h1>404 - File ", sizeof("<html>\n <head>\n  <title>File Not Found</title>\n </head>\n <body>\n  <h1>404 - File ") - 1);
-	PHPWRITE(entry, entry_len);
-	PHPWRITE(" Not Found</h1>\n </body>\n</html>",  sizeof(" Not Found</h1>\n </body>\n</html>") - 1);
+	PHPWRITE("Not Found</h1>\n </body>\n</html>",  sizeof("Not Found</h1>\n </body>\n</html>") - 1);
 }
 /* }}} */
 
@@ -1441,6 +1439,7 @@ static int phar_build(zend_object_iterator *iter, void *puser) /* {{{ */
 	char *str_key;
 	zend_class_entry *ce = p_obj->c;
 	phar_archive_object *phar_obj = p_obj->p;
+	php_stream_statbuf ssb;
 
 	value = iter->funcs->get_current_data(iter);
 
@@ -1720,6 +1719,16 @@ after_open_fp:
 		php_stream_copy_to_stream_ex(fp, p_obj->fp, PHP_STREAM_COPY_ALL, &contents_len);
 		data->internal_file->uncompressed_filesize = data->internal_file->compressed_filesize =
 			php_stream_tell(p_obj->fp) - data->internal_file->offset;
+		if (php_stream_stat(fp, &ssb) != -1) {
+			data->internal_file->flags = ssb.sb.st_mode & PHAR_ENT_PERM_MASK ;
+		} else {
+#ifndef _WIN32
+			mode_t mask;
+			mask = umask(0);
+			umask(mask);
+			data->internal_file->flags &= ~mask;
+#endif
+		}
 	}
 
 	if (close_fp) {
