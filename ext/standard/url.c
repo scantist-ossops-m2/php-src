@@ -235,13 +235,18 @@ PHPAPI php_url *php_url_parse_ex(char const *str, size_t length)
 			ret->pass = estrndup(pp, (p-pp));
 			php_replace_controlchars_ex(ret->pass, (p-pp));
 		} else {
+			if (!is_userinfo_valid(s, p-s)) {
+				goto check_port;
+			}
 			ret->user = estrndup(s, (p-s));
 			php_replace_controlchars_ex(ret->user, (p-s));
+
 		}
 
 		s = p + 1;
 	}
 
+check_port:
 	/* check for port */
 	if (s < ue && *s == '[' && *(e-1) == ']') {
 		/* Short circuit portscan,
@@ -559,7 +564,7 @@ PHPAPI size_t php_url_decode(char *str, size_t len)
 #ifndef CHARSET_EBCDIC
 			*dest = (char) php_htoi(data + 1);
 #else
-			*dest = os_toebcdic[(char) php_htoi(data + 1)];
+			*dest = os_toebcdic[(unsigned char) php_htoi(data + 1)];
 #endif
 			data += 2;
 			len -= 2;
@@ -651,7 +656,7 @@ PHPAPI size_t php_raw_url_decode(char *str, size_t len)
 #ifndef CHARSET_EBCDIC
 			*dest = (char) php_htoi(data + 1);
 #else
-			*dest = os_toebcdic[(char) php_htoi(data + 1)];
+			*dest = os_toebcdic[(unsigned char) php_htoi(data + 1)];
 #endif
 			data += 2;
 			len -= 2;
@@ -680,7 +685,7 @@ PHP_FUNCTION(get_headers)
 	php_stream_context *context;
 
 	ZEND_PARSE_PARAMETERS_START(1, 3)
-		Z_PARAM_STRING(url, url_len)
+		Z_PARAM_PATH(url, url_len)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_LONG(format)
 		Z_PARAM_RESOURCE_EX(zcontext, 1, 0)
